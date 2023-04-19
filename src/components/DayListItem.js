@@ -16,13 +16,14 @@ export default function DayListItem(props) {
   }
 
   let spots = formatSpots(props.spots)
+  const day = props.name;
 
   return (
     <li
       className={dayClass}
-      onClick={() => props.setDay(props.name)}
+      onClick={() => props.setDay(day)}
     >
-      <h2 className="text--regular">Day Name</h2> 
+      <h2 className="text--regular">{day}</h2> 
       <h3 className="text--light">{spots} remaining</h3>
     </li>
   );
