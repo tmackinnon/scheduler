@@ -4,6 +4,7 @@ import classNames from "classnames";
 
 export default function DayListItem(props) {
   let spot = props.spots;
+  const day = props.name;
 
   const dayClass = classNames("day-list__item", {
     "day-list__item--selected": props.selected,
@@ -15,8 +16,6 @@ export default function DayListItem(props) {
     if (!spot) spot = "no";
     return `${spot} spots remaining`
   }
-
-  const day = props.name;
 
   return (
     <li
