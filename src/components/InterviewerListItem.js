@@ -5,8 +5,6 @@ import classNames from "classnames";
 const InterviewerListItem = function(props) {
   const name = props.name;
   const avatar = props.avatar;
-  const setInterviewer = props.setInterviewer;
-  const id = props.id;
 
   const intItemClass = classNames("interviewers__item", {
     "interviewers__item--selected": props.selected
@@ -15,7 +13,7 @@ const InterviewerListItem = function(props) {
   return (
     <li
       className={intItemClass}
-      onClick={() => { setInterviewer(id); }}
+      onClick={props.setInterviewer}
     >
       <img
         className="interviewers__item-image"
