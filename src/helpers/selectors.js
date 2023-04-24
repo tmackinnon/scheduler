@@ -13,6 +13,22 @@ export const getAppointmentsForDay = function(state, day) {
 }
 
 
+export const getInterviewersForDay = function(state, day) {
+  
+  //find the associated day object
+  const dayInfo = state.days.filter(obj => obj.name === day)
+
+  //return empty array if no day exists
+  if (!dayInfo.length) {
+    return dayInfo;
+  }
+
+  const interviewerInfo = dayInfo[0].interviewers;
+  //return array of interviewers objs
+  return interviewerInfo.map(id => state.interviewers[id]); 
+}
+
+
 export const getInterview = function(state, interview) {
   if (!interview) return null;
   

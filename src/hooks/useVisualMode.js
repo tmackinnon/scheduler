@@ -9,7 +9,7 @@ const useVisualMode = (initial) => {
     setMode(newMode)
 
     if (replace) {
-      const newHist = [...history] //do i need this? or can I just use 'history'
+      const newHist = [...history]
       newHist.pop();
       setHistory([...newHist, newMode])
     } else {
