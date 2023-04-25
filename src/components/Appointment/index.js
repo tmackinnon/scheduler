@@ -5,6 +5,7 @@ import Empty from "./Empty";
 import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import Error from "./Error";
 import useVisualMode from "hooks/useVisualMode";
 import "components/Appointment/styles.scss";
 
@@ -32,14 +33,14 @@ const Appointment = function(props) {
     transition(SAVING); //show user that something is happening 
     props.bookInterview(props.id, interview) //returns an axios request which is a promise
       .then(() => transition(SHOW)) //once promise is resolve change mode to show
-      .catch(() => transition(ERROR_SAVE)); //show error message
+      .catch(error => transition(ERROR_SAVE, true)); //show error message
   }
 
   function remove() {
-    transition(DELETING)
+    transition(DELETING, true)
     props.cancelInterview(props.id) //call this function and it returns a promise
       .then(() => transition(EMPTY))
-      .catch(() => transition(ERROR_DELETE)); //show error message
+      .catch(error => transition(ERROR_DELETE, true)); //show error message
   }
 
   return (
@@ -85,6 +86,18 @@ const Appointment = function(props) {
           interviewer={props.interview.interviewer.id}
           onCancel={back}
           onSave={save}
+        />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error
+          message={"Could not delete"}
+          onClose={back}
+        />
+      )}
+      {mode === ERROR_SAVE && (
+        <Error
+          message={"Could not save"}
+          onClose={back}
         />
       )}
     </article>
