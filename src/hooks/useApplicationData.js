@@ -13,6 +13,25 @@ const useApplicationData = () => {
 
   const setDay = day => setState({ ...state, day });
 
+  const updateSpots = (id, interview = false)  => {
+    //function to remove or add spot when you book or cancel
+    //only booking appt will have an interview argument
+    const newDays = [...state.days]
+    
+    newDays.forEach((day, index) => { 
+      let spots = day.spots;
+      if (day.appointments.includes(id)) {
+        //add or remove a spot
+        interview ? spots -- : spots ++;
+        //update the array with the updated day object
+        newDays[index] = {...day, spots}
+      } 
+    });
+    return newDays
+  }
+
+
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -24,13 +43,13 @@ const useApplicationData = () => {
     };
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
-        setState({ ...state, appointments });
+        const days = (updateSpots(id, interview))
+        setState({ ...state, appointments, days });
       })
   }
 
   function cancelInterview(id) {
     //takes in appt id from index.js
-    console.log("appt id", id)
     const appointment = {
       ...state.appointments[id],
       interview: null
@@ -41,7 +60,8 @@ const useApplicationData = () => {
     };
     return axios.delete(`/api/appointments/${id}`, appointment)
     .then(() => {
-      setState({...state, appointments});
+      const days = (updateSpots(id))
+      setState({ ...state, appointments, days });
     })
   }
 
