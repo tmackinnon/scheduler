@@ -4,6 +4,7 @@ import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
 import Status from "./Status";
+import Confirm from "./Confirm";
 import useVisualMode from "hooks/useVisualMode";
 import "components/Appointment/styles.scss";
 
@@ -11,6 +12,11 @@ const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
+const DELETING = "DELETING";
+const CONFIRM = "CONFIRMING";
+const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 
 const Appointment = function(props) {
 
@@ -25,11 +31,15 @@ const Appointment = function(props) {
     };
     transition(SAVING); //show user that something is happening 
     props.bookInterview(props.id, interview) //returns an axios request which is a promise
-      .then(() => transition(SHOW)); //once promise is resolve change mode to show
+      .then(() => transition(SHOW)) //once promise is resolve change mode to show
+      .catch(() => transition(ERROR_SAVE)); //show error message
   }
 
-  function onDelete() {
-    props.cancelInterview
+  function remove() {
+    transition(DELETING)
+    props.cancelInterview(props.id) //call this function and it returns a promise
+      .then(() => transition(EMPTY))
+      .catch(() => transition(ERROR_DELETE)); //show error message
   }
 
   return (
@@ -40,7 +50,8 @@ const Appointment = function(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-          onDelete={onDelete}
+          onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
         />
       )}
       {mode === CREATE && (
@@ -53,6 +64,27 @@ const Appointment = function(props) {
       {mode === SAVING && (
         <Status
           message={"Saving"}
+        />
+      )}
+      {mode === DELETING && (
+        <Status
+          message={"Deleting"}
+        />
+      )}
+      {mode === CONFIRM && (
+        <Confirm
+          message={"Are you sure you want to delete?"}
+          onConfirm={remove}
+          onCancel={back}
+        />
+      )}
+      {mode === EDIT && (
+        <Form
+          interviewers={props.interviewers}
+          student={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          onCancel={back}
+          onSave={save}
         />
       )}
     </article>

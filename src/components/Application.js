@@ -30,8 +30,22 @@ export default function Application(props) {
       .catch(error => console.log(error));
   }
 
-  function cancelInterview(id, interview) {
-    console.log(id, interview)
+  function cancelInterview(id) {
+    //takes in appt id from index.js
+    console.log("appt id", id)
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.delete(`/api/appointments/${id}`, appointment)
+    .then(() => {
+      setState({...state, appointments});
+    })
+    .catch(error => console.log(error));
   }
 
   const setDay = day => setState({ ...state, day });
