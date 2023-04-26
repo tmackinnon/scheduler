@@ -25,18 +25,8 @@ const useApplicationData = () => {
       }
     });
   
-    //create the new days array, with updated spots
-    const updatedDays = state.days.map((dayObj) => {
-      if(dayObj.id === day.id) {
-        return {...dayObj, spots: newSpots};
-      } else {
-        return dayObj;
-      }
-    })
-  
-    // return an updated days array
-    return updatedDays
-
+    //create the new days array, with updated spots and return in
+    return state.days.map((dayObj) => dayObj.id === day.id ? {...dayObj, spots: newSpots} : dayObj);
   };
 
 
