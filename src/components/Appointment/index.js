@@ -35,7 +35,8 @@ const Appointment = function(props) {
       .then(() => transition(SHOW)) //once promise is resolve change mode to show
       .catch(error => {
         transition(ERROR_SAVE, true)
-        console.log(error)}); //show error message
+        console.log(error)
+      }); //show error message
   }
 
   function remove() {

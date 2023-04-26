@@ -18,8 +18,6 @@ const InterviewerList = function(props) {
     />
   );
 
-
-
   return (
     <section className="interviewers">
       <h4 className="interviewers__header text--light">Interviewer</h4>
@@ -29,5 +27,6 @@ const InterviewerList = function(props) {
     </section>
   );
 };
+
 
 export default InterviewerList;

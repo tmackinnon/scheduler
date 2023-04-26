@@ -13,23 +13,6 @@ const useApplicationData = () => {
 
   const setDay = day => setState({ ...state, day });
 
-  // const updateSpots = (id, interview = false)  => {
-  //   //function to remove or add spot when you book or cancel
-  //   //only booking appt will have an interview argument
-  //   const newDays = [...state.days]
-    
-  //   newDays.forEach((day, index) => { 
-  //     let spots = day.spots;
-  //     if (day.appointments.includes(id)) { //should we include limit? btwn 0-5
-  //       //add or remove a spot
-  //       interview ? spots -- : spots ++;
-  //       //update the array with the updated day object
-  //       newDays[index] = {...day, spots}
-  //     } 
-  //   });
-  //   return newDays
-  // }
-
   const updateSpots = function(state, appointments, id) {
     //find the correct day with the appt id 
     const day = state.days.find(({ appointments }) => appointments.includes(id))
