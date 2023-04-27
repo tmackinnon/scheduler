@@ -6,7 +6,9 @@ Interview Scheduler is a Single Page Application built using React. It allows us
 
 ### Preview
 ![Show Schedule](https://github.com/tmackinnon/scheduler/blob/master/docs/Show.gif?raw=true)
+## Book an Appointment
 ![Book Appointment](https://github.com/tmackinnon/scheduler/blob/master/docs/Add.gif?raw=true)
+## Edit and Delete an Appointment
 ![Edit & Delete Appointment](https://github.com/tmackinnon/scheduler/blob/master/docs/Edit-Delete.gif?raw=true)
 
 ## Getting Started
