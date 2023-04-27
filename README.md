@@ -5,9 +5,9 @@
 Interview Scheduler is a Single Page Application built using React. It allows users to book, cancel and edit interview appointments. Data is persisted by the API server using a PostgreSQL database. The client application communicates with an API server over HTTP, using the JSON format. Tests are used throughout the development of the project, using Jest, StoryBook and Cypress.
 
 ### Preview
-![Show Schedule]()
-![Book Appointment]()
-![Edit & Delete Appointment]()
+![Show Schedule](https://github.com/tmackinnon/scheduler/blob/master/docs/Show.gif?raw=true)
+![Book Appointment](https://github.com/tmackinnon/scheduler/blob/master/docs/Add.gif?raw=true)
+![Edit & Delete Appointment](https://github.com/tmackinnon/scheduler/blob/master/docs/Edit-Delete.gif?raw=true)
 
 ## Getting Started
 
