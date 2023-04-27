@@ -35,15 +35,14 @@ const Appointment = function(props) {
       .then(() => transition(SHOW)) //once promise is resolve change mode to show
       .catch(error => {
         transition(ERROR_SAVE, true)
-        console.log(error)
-      }); //show error message
+      });
   }
 
   function remove() {
     transition(DELETING, true)
     props.cancelInterview(props.id) //call this function and it returns a promise
       .then(() => transition(EMPTY))
-      .catch(error => transition(ERROR_DELETE, true)); //show error message
+      .catch(error => transition(ERROR_DELETE, true));
   }
 
   return (

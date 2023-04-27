@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+// import * as axios from "axios"; 
 import axios from "axios";
-// import axios from "__mocks__ /axios";
+// import axios from "__mocks__ /axios"; // use this when testing with mock data in jest 
+// jest.mock('axios');
 
 const useApplicationData = () => {
 
@@ -65,7 +67,7 @@ const useApplicationData = () => {
 
   useEffect(() => {
     Promise.all([
-      axios.get("/api/days"), //change url to work with test 
+      axios.get("/api/days"),
       axios.get("/api/appointments"),
       axios.get("/api/interviewers")
     ])
