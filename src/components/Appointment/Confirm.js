@@ -13,6 +13,6 @@ const Confirm = function(props) {
       </section>
     </main>
   );
-}
+};
 
 export default Confirm;

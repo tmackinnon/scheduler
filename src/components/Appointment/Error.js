@@ -17,6 +17,6 @@ const Error = function(props) {
       />
     </main>
   );
-}
+};
 
 export default Error;

@@ -13,6 +13,6 @@ const Status = function(props) {
       <h1 className="text--semi-bold">{message}</h1>
     </main>
   );
-}
+};
 
 export default Status;

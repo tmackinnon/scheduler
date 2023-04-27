@@ -30,16 +30,16 @@ const Appointment = function(props) {
       student: name,
       interviewer
     };
-    transition(SAVING); //show user that something is happening 
-    props.bookInterview(props.id, interview) //returns an axios request which is a promise
+    transition(SAVING);
+    props.bookInterview(props.id, interview) //makes axios request, returns a promise
       .then(() => transition(SHOW)) //once promise is resolve change mode to show
       .catch(error => {
-        transition(ERROR_SAVE, true)
+        transition(ERROR_SAVE, true);
       });
   }
 
   function remove() {
-    transition(DELETING, true)
+    transition(DELETING, true);
     props.cancelInterview(props.id) //call this function and it returns a promise
       .then(() => transition(EMPTY))
       .catch(error => transition(ERROR_DELETE, true));

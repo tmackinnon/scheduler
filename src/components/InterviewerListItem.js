@@ -26,10 +26,3 @@ const InterviewerListItem = function(props) {
 };
 
 export default InterviewerListItem;
-
-
-
-// id = props.id
-// name = props.name
-// avatar = props.avatar
-// setInterviewe r= props.setInterviewer

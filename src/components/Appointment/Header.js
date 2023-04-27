@@ -9,6 +9,6 @@ const Header = function(props) {
       <hr className="appointment__separator" />
     </header>
   );
-}
+};
 
 export default Header;

@@ -1,9 +1,9 @@
 import React from "react";
 
-const Show = function (props) {
-  const student = props.student
+const Show = function(props) {
+  const student = props.student;
   const interviewerName = props.interviewer.name;
-  
+
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">
@@ -30,9 +30,9 @@ const Show = function (props) {
           />
         </section>
       </section>
-      
+
     </main>
   );
-}
+};
 
 export default Show;

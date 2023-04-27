@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
@@ -9,10 +9,10 @@ export default function Application(props) {
 
   const {
     state,
-    setDay, 
+    setDay,
     bookInterview,
     cancelInterview
-  } = useApplicationData()
+  } = useApplicationData();
 
 
   const interviewers = getInterviewersForDay(state, state.day);

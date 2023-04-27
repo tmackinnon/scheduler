@@ -3,7 +3,7 @@ import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
 const Form = function(props) {
-  
+
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
@@ -11,12 +11,12 @@ const Form = function(props) {
   const reset = function() {
     setStudent("");
     setInterviewer(null);
-  }
+  };
 
   const cancel = function() {
     reset();
     props.onCancel();
-  }
+  };
 
   function validate() {
     if (student === "") {
@@ -28,8 +28,8 @@ const Form = function(props) {
       setError("Please select an interviewer");
       return;
     }
-    
-    setError("")
+
+    setError("");
     props.onSave(student, interviewer);
   }
 
@@ -48,7 +48,7 @@ const Form = function(props) {
           />
         </form>
         <section className="appointment__validation">{error}</section>
-        <InterviewerList 
+        <InterviewerList
           interviewers={props.interviewers}
           value={interviewer}
           onChange={setInterviewer}
@@ -62,6 +62,6 @@ const Form = function(props) {
       </section>
     </main>
   );
-}
+};
 
 export default Form;

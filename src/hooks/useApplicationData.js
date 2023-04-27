@@ -16,10 +16,10 @@ const useApplicationData = () => {
   const setDay = day => setState({ ...state, day });
 
   const updateSpots = function(state, appointments, id) {
-    //find the correct day with the appt id 
+    // find the day w/ appt id 
     const day = state.days.find(({ appointments }) => appointments.includes(id))
   
-    //count the spots for the specific day
+    // count the spots
     let newSpots = 0;
     day.appointments.forEach(element => {
       if (!appointments[element].interview) {
@@ -27,7 +27,7 @@ const useApplicationData = () => {
       }
     });
   
-    //create the new days array, with updated spots and return in
+    //create the new days array, with updated spots and return
     return state.days.map((dayObj) => dayObj.id === day.id ? {...dayObj, spots: newSpots} : dayObj);
   };
 
@@ -49,7 +49,7 @@ const useApplicationData = () => {
   }
 
   function cancelInterview(id) {
-    //takes in appt id from index.js
+    //takes in appt id
     const appointment = {
       ...state.appointments[id],
       interview: null
@@ -76,7 +76,6 @@ const useApplicationData = () => {
       })
       .catch(error => console.log(error));
   }, []);
-
 
 
   return {state, setDay, bookInterview, cancelInterview}
